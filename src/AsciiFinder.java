@@ -17,7 +17,7 @@ public class AsciiFinder
         String fileName = in.nextLine();
 
         // Customize file path as needed for local
-        File file = new File("/Users/ryan_kadel/Work Stuff/Pantheon/text-files/" + fileName + ".txt");
+        File file = new File("/Users/ryan_kadel/WorkStuff/Pantheon/text-files/" + fileName + ".txt");
 
         String uncleanContent = readFileIntoString(file);
 
@@ -25,7 +25,7 @@ public class AsciiFinder
 
         //System.out.println(cleanContent);
 
-        FileWriter writer = new FileWriter("/Users/ryan_kadel/Work Stuff/Pantheon/text-files/" + fileName + "-scanResults.txt");
+        FileWriter writer = new FileWriter("/Users/ryan_kadel/WorkStuff/Pantheon/text-files/" + fileName + "-scanResults.txt");
         writer.write(cleanContent);
         writer.close();
     }
@@ -47,14 +47,14 @@ public class AsciiFinder
     private static String cleanTextContent(String text)
     {
         // locate off all non-ASCII characters
-        text = text.replaceAll("[^\\x00-\\x7F]", "***");
+       // text = text.replaceAll("[^\\x00-\\x7F]", "***");
 
         // locates all the ASCII control characters
-        text = text.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "***");
+       // text = text.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "***");
 
         // locates non-printable characters from Unicode
         // Leaving in code for now but seems broken and picks up weird spaces and stuff
-        // text = text.replaceAll("\\p{C}", "***");
+         text = text.replaceAll("\\p{C}", "***");
 
         return text.trim();
     }
